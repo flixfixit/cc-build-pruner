@@ -13,6 +13,8 @@ Ein CLI, um alte, löschbare Builds in SAP Commerce Cloud zu listen und (optiona
 mvn package
 ```
 
+Der Build erzeugt in `target/` ein ausführbares JAR inklusive aller Abhängigkeiten.
+
 ## Nutzung
 
 Die Anwendung nutzt [Picocli](https://picocli.info/) und stellt den Befehl `cc-build` mit den Unterbefehlen `list` und `prune` bereit.
@@ -27,7 +29,7 @@ Setze die benötigten Verbindungsinformationen entweder per Kommandozeilenoption
 ### Builds auflisten
 
 ```bash
-java -cp target/cc-build-pruner-0.1.0.jar com.example.ccbuild.BuildTool \
+java -jar target/cc-build-pruner-0.1.0.jar \
   list --limit 100
 ```
 
@@ -40,7 +42,7 @@ Weitere nützliche Optionen:
 ### Builds löschen
 
 ```bash
-java -cp target/cc-build-pruner-0.1.0.jar com.example.ccbuild.BuildTool \
+java -jar target/cc-build-pruner-0.1.0.jar \
   prune --older-than 30d --dry-run
 ```
 
