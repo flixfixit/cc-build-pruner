@@ -36,7 +36,7 @@ public class Client {
         String resolvedEnvironment = Util.requireNonBlank(environmentId, "Environment ID is required");
 
         int effectiveLimit = limit <= 0 ? 50 : limit;
-        String path = String.format("projects/%s/environments/%s/builds?limit=%d",
+        String path = String.format("subscriptions/%s/builds?environmentCode=%s&limit=%d",
                 encode(resolvedProject), encode(resolvedEnvironment), effectiveLimit);
         HttpRequest request = requestBuilder(baseUri.resolve(path)).GET().build();
         HttpResponse<String> response = httpClient.send(request, HttpResponse.BodyHandlers.ofString());
